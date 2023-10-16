@@ -1,0 +1,495 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    background: radial-gradient(134.34% 134.34% at 50% 0%, #8CC461 0%, #8CC461 100%);
+}
+
+.container {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: radial-gradient(134.34% 134.34% at 50% 0%, #8CC461 0%, #8CC461 100%);
+}
+
+.titletext {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.scorebox {
+    display: flex;
+    width: 50%;
+    border: 3px solid white;
+    border-radius: 1rem;
+    height: 22%;
+    justify-content: space-between;
+    margin-top: 2rem;
+    align-items: center;
+    padding: 2rem;
+    background: rgba(28, 48, 120, 0.00);
+}
+
+.score {
+    display: flex;
+    gap: 1rem;
+}
+
+.score .cscore,
+.uscore {
+    width: 8rem;
+    height: 7rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.score p {
+    color: #656565;
+    font-size: 1.0625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.10625rem;
+}
+
+.score h1 {
+    color: #252525;
+    font-size: 2.3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+/* Game  play section */
+
+.handchoices {
+    background-image: url("assets/tri.png");
+    background-repeat: no-repeat;
+    width: 42rem;
+    height: 28rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-position: center;
+    margin-top: 4rem;
+}
+
+.rock {
+    margin-right: 4rem;
+}
+
+.scissor {
+    margin-left: 4rem;
+}
+
+.paper {
+    margin-top: 4rem;
+}
+
+.handchoices .hand {
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.handchoices img {
+    width: 12rem;
+}
+
+
+/* result section */
+
+.resultbox {
+    width: 75%;
+    display: none;
+    margin-top: 5rem;
+}
+
+.resultbox img {
+    width: 275px;
+    height: 275%;
+}
+
+.resultbox>div {
+    flex: 1;
+}
+
+.resultbox h1 {
+    color: #FFF;
+    font-size: 1.3625rem;
+    letter-spacing: 0.10625rem;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.resultbox .handimage {
+    display: flex;
+    justify-content: center;
+}
+
+.winresultbox {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+}
+
+.winresultbox h1 {
+    text-align: center;
+    color: #FFF;
+    font-size: 2.4375rem;
+    font-style: normal;
+    letter-spacing: 0.24375rem;
+    margin-bottom: 0%;
+}
+
+.winresultbox p {
+    text-align: center;
+    color: #FFF;
+    font-size: 1.5625rem;
+    letter-spacing: 0.15625rem;
+}
+
+.newgame {
+    background-color: #FFF;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #424141;
+    font-size: 0.9375rem;
+    letter-spacing: 0.09375rem;
+    transition: all 0.15s;
+    width: fit-content;
+    text-align: center;
+}
+
+#pcpickimage {
+    visibility: hidden;
+}
+
+
+/* Rule container */
+
+.rulebutton {
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    border: 2px solid #FFF;
+    background: rgba(217, 217, 217, 0.00);
+    height: 2rem;
+    color: #FFF;
+    font-size: 1rem;
+    letter-spacing: 0.13125rem;
+    transition: all 0.15s;
+}
+
+.rulebox {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-right: 2rem;
+    width: 100vw;
+    height: 10rem;
+    align-items: center;
+    height: auto;
+    z-index: 3;
+    position: fixed;
+    bottom: 2rem;
+}
+
+.nextbutton {
+    cursor: pointer;
+    width: 7rem;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    border: 2px solid #FFF;
+    background: rgba(217, 217, 217, 0.00);
+    height: 2rem;
+    color: #FFF;
+    font-size: 1rem;
+    letter-spacing: 0.13125rem;
+    transition: all 0.15s;
+}
+
+.rulecontainer {
+    z-index: 4;
+    width: 100vw;
+    height: 30vh;
+    display: none;
+    margin-top: 18rem;
+    justify-content: flex-end;
+    position: fixed;
+    padding-right: 2rem;
+    align-self: end;
+    align-content: end;
+    width: fit-content;
+    opacity: 0;
+    animation: fadeIn 0.2s forwards;
+}
+
+
+/* its for hidden and visible */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.rulepage {
+    padding-top: 1rem;
+    padding-left: 0.5rem;
+    border-radius: 0.8125rem;
+    border: 7px solid #FFF;
+    background: #004429;
+    width: 18.375rem;
+    height: 22.3125rem;
+    margin-right: 1rem;
+    margin-top: 2rem;
+    z-index: 4;
+    position: fixed;
+}
+
+.rulecontainer h1 {
+    padding-bottom: 1.5rem;
+    color: #FFF;
+    font-size: 1.5125rem;
+    font-style: normal;
+    font-weight: 500;
+    text-align: center;
+}
+
+.rules {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rules ul>li {
+    color: #FFF;
+    padding: 0.5rem;
+    font-size: 0.9125rem;
+}
+
+
+/* open and close section */
+
+.close-btn {
+    background: transparent;
+    display: flex;
+    margin-top: 1rem;
+    margin-left: 0%;
+    border-color: transparent;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 4;
+    cursor: pointer;
+}
+
+.close-btn>img {
+    width: 43px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li::before {
+    content: "\25A0";
+    color: #FFD600;
+    font-size: 1.3em;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.5em;
+}
+
+li {
+    display: flex;
+    align-items: center;
+}
+
+.pulsecontainer {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: #f8f40c32;
+}
+
+.pulsecontainer span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    opacity: .8;
+    animation: pulseAnimation 4s ease-out infinite;
+    animation-delay: calc(1s * var(--i));
+}
+
+@keyframes pulseAnimation {
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+.pulsecontainer>img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: inherit;
+    height: inherit;
+    z-index: 2;
+}
+
+.pulsecontainer1 span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    opacity: .8;
+    animation: pulseAnimation 4s ease-out infinite;
+    animation-delay: calc(1s * var(--i));
+}
+
+.pulsecontainer1 {
+    visibility: hidden;
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(17, 174, 3, 0.45);
+}
+
+.pulsecontainer1>img {
+    visibility: visible;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: inherit;
+    height: inherit;
+    z-index: 2;
+}
+
+.waitpc {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    padding-left: 1rem;
+}
+
+
+/* for responsive only big screen and not for mobile */
+
+@media (min-width:767px) and (max-width: 1023px) {
+    .scorebox {
+        width: 80%;
+        height: fit-content;
+        padding: 3%;
+    }
+    .titletext {
+        font-size: 1.5rem;
+    }
+    .score .cscore,
+    .uscore {
+        width: 7rem;
+        height: 6rem;
+    }
+    .score p {
+        font-size: 0.9rem;
+    }
+    .score h1 {
+        font-size: 1.5rem;
+    }
+    /* play section */
+    .handchoices {
+        width: 35rem;
+        height: 25rem;
+        margin-top: 3rem;
+    }
+    .handchoices img {
+        width: 11rem;
+    }
+    /* result section */
+    .resultbox {
+        margin-top: 4rem;
+        padding: 0%;
+        justify-content: center;
+        align-items: center;
+    }
+    .resultbox h1 {
+        font-size: 1.5625rem;
+    }
+    .winresultbox {
+        margin: 3%;
+    }
+    .winresultbox h1 {
+        font-size: 1.5em;
+        margin-bottom: 0%;
+    }
+    .winresultbox p {
+        font-size: 1rem;
+    }
+    .newgame {
+        margin-top: 2rem;
+        font-size: 0.8rem;
+        z-index: 2;
+    }
+    .pulsecontainer {
+        width: 175px;
+        height: 175px;
+    }
+    .pulsecontainer>img {
+        width: inherit;
+        height: inherit;
+    }
+    .pulsecontainer1 {
+        width: 175px;
+        height: 175px;
+    }
+    .pulsecontainer1>img {
+        width: inherit;
+        height: inherit;
+    }
+    .waitpc>h3 {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    .rulebox {
+        margin-right: 2rem;
+    }
+}
